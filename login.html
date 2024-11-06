@@ -1,62 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
-    <div class="box">
-        <h2>Singup</h2>
-        <form id="signupForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
-
-            <button type="button" onclick="validateForm()">Sign Up</button>
-
-            <p id="error-message" class="error"></p>
-        </form>
-    </div>
-
     <script>
-        function validateForm() {
-            var username = document.getElementById('username').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
-            var errorMessage = document.getElementById('error-message');
-            let text;
-            if (isNaN(username) || username<a || username>z) {
-                text = "Input not valid";
-            } else {
-                text = "Input OK";
+        function data(){
+            var a=document.getElementById('phone').value;
+            var b=document.getElementById('email').value;
+            var c=document.getElementById('username').value;
+            if(a.length==10 && b!="" && ((c>='a' && c<='z') || (c>='A' && c<='Z'))){
+                alert("Name, Phone Number and Email submitted successfully !!");
+                window.location.href="index.html"
             }
-            if (password !== confirmPassword) {
-                errorMessage.textContent = "Passwords do not match";
-            } else {
-                // You can add more validation here if needed
+            else if(a.length<10 || a.length>10)
+            {
+                alert("Number should be of 10 digit!");
+                return false;
+            }
+            else if(isNaN(a)){
+                alert("Only Numbers allowed!");
+                return false;
+            }
+            else if(a=="" || b=="" || c==""){
+             alert("All fields are Mandatory!!")
+             return false;
+            }
+            else if(b==""){
+                alert("Email Required!!");
+                return false;
+            }
+            else if((c<'a' && c>'z') || (c<'A' && c>'Z')){
+                alert("A valid name Required!!");
+                return false;
+            }
 
-                // If all validation passes, you can submit the form or perform other actions
-                errorMessage.textContent = ""; // Clear any previous error messages
-                alert("Sign up successful!");
-                window.location.href = "index.html"
-            }
+            
         }
     </script>
 
-</body>
+     
+<div class="box">
+    <h2>Login</h2>
+    <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <button type="button" onclick="data()">Login</button>
+
+        
+    </form>
+</div>
+    
+</body>
 </html>
